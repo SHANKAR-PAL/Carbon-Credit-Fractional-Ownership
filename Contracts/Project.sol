@@ -7,20 +7,18 @@ pragma solidity ^0.8.0;
  * @title Carbon Credit Fractional Ownership
  * @dev A smart contract for fractionalizing and trading carbon credits
  */
-contract Project {
-    
-    // Struct to represent a Carbon Credit
-    struct CarbonCredit {
-        uint256 id;
-        string projectName;
-        uint256 totalTons;
-        uint256 availableTons;
-        uint256 pricePerTon;
-        address owner;
-        bool verified;
-        bool retired;
-    }
-    
+
+struct CarbonCredit {
+    uint256 id;               // Unique identifier for the credit
+    string projectName;       // Name of the carbon project
+    uint256 totalTons;        // Total carbon tons available
+    uint256 availableTons;    // Tons still available for sale
+    uint256 pricePerTon;      // Price in wei per ton
+    address owner;            // Project creator or owner
+    bool verified;            // Verification flag for project validity
+    bool retired;             // Whether credit has been fully retired
+}
+
     // State variables
     uint256 public creditCounter;
     mapping(uint256 => CarbonCredit) public carbonCredits;
