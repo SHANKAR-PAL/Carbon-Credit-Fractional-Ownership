@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: MIT
+// Solidity version pragma ensures compatibility with compiler version 0.8.x
+
 pragma solidity ^0.8.0;
 
 /**
