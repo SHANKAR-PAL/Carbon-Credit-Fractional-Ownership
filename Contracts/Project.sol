@@ -35,6 +35,10 @@ struct CarbonCredit {
      * @param _totalTons Total tons of CO2 offset
      * @param _pricePerTon Price per ton in wei
      */
+// ----------------------
+// Core Project Functions
+// ----------------------
+
     function createCarbonCredit(
         string memory _projectName,
         uint256 _totalTons,
