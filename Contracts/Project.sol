@@ -20,7 +20,7 @@ struct CarbonCredit {
 }
 
     // State variables
-    uint256 public creditCounter;
+    uint256 public creditCount;
     mapping(uint256 => CarbonCredit) public carbonCredits;
     mapping(address => mapping(uint256 => uint256)) public userCreditBalances;
     
@@ -47,10 +47,10 @@ struct CarbonCredit {
         require(_totalTons > 0, "Total tons must be greater than 0");
         require(_pricePerTon > 0, "Price per ton must be greater than 0");
         
-        creditCounter++;
+        creditCount++;
         
-        carbonCredits[creditCounter] = CarbonCredit({
-            id: creditCounter,
+        carbonCredits[creditCount] = CarbonCredit({
+            id: creditCount,
             projectName: _projectName,
             totalTons: _totalTons,
             availableTons: _totalTons,
@@ -60,9 +60,9 @@ struct CarbonCredit {
             retired: false
         });
         
-        emit CreditCreated(creditCounter, _projectName, _totalTons, _pricePerTon);
+        emit CreditCreated(creditCount, _projectName, _totalTons, _pricePerTon);
         
-        return creditCounter;
+        return creditCount;
     }
     
     /**
