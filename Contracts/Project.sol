@@ -25,9 +25,47 @@ struct CarbonCredit {
     mapping(address => mapping(uint256 => uint256)) public userCreditBalances;
     
     // Events
-    event CreditCreated(uint256 indexed creditId, string projectName, uint256 totalTons, uint256 pricePerTon);
-    event CreditPurchased(uint256 indexed creditId, address indexed buyer, uint256 tons, uint256 totalCost);
-    event CreditRetired(uint256 indexed creditId, address indexed retiree, uint256 tons);
+    //event CreditCreated(uint256 indexed creditId, string projectName, uint256 totalTons, uint256 pricePerTon);
+    //event CreditPurchased(uint256 indexed creditId, address indexed buyer, uint256 tons, uint256 totalCost);
+    //event CreditRetired(uint256 indexed creditId, address indexed retiree, uint256 tons);
+    // ---------------------------------------------------------------------------
+    // Events
+    // ---------------------------------------------------------------------------
+    
+    /// @notice Emitted when a new carbon credit is created
+    /// @param creditId The unique ID assigned to the carbon credit
+    /// @param projectName The name of the carbon offset project
+    /// @param totalTons Total number of CO2 tons represented
+    /// @param pricePerTon Price in wei for each ton of CO2 offset
+    event CreditCreated(
+        uint256 indexed creditId,
+        string projectName,
+        uint256 totalTons,
+        uint256 pricePerTon
+    );
+    
+    /// @notice Emitted when a user purchases fractional carbon credits
+    /// @param creditId The ID of the carbon credit being purchased
+    /// @param buyer The address of the buyer
+    /// @param tons The number of tons purchased
+    /// @param totalCost The total amount paid in wei
+    event CreditPurchased(
+        uint256 indexed creditId,
+        address indexed buyer,
+        uint256 tons,
+        uint256 totalCost
+    );
+    
+    /// @notice Emitted when a user retires carbon credits permanently
+    /// @param creditId The ID of the retired carbon credit
+    /// @param retiree The address of the person retiring the credit
+    /// @param tons The number of tons retired
+    event CreditRetired(
+        uint256 indexed creditId,
+        address indexed retiree,
+        uint256 tons
+    );
+    
     
     /**
      * @dev Creates a new carbon credit token
