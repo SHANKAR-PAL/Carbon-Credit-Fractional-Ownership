@@ -185,4 +185,19 @@ struct CarbonCredit {
             credit.retired
         );
     }
+    /**
+     * @dev Get total number of carbon credits created
+     * @return The total count of credits created so far
+     */
+    function getTotalCredits() public view returns (uint256) {
+        return creditCount;
+    }
 }
+  
+
+
+
+
+
+
+
