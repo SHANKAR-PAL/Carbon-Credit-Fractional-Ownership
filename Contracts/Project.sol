@@ -82,9 +82,9 @@ struct CarbonCredit {
         uint256 _totalTons,
         uint256 _pricePerTon
     ) public returns (uint256) {
-        require(_totalTons > 0, "Total tons must be greater than 0");
-        require(_pricePerTon > 0, "Price per ton must be greater than 0");
-        
+        require(_totalTons > 0, "Total tons must be greater than 0.");
+        require(_pricePerTon > 0, "Price per ton must be greater than 0.");
+
         creditCount++;
         
         carbonCredits[creditCount] = CarbonCredit({
@@ -111,13 +111,13 @@ struct CarbonCredit {
     function purchaseCarbonCredit(uint256 _creditId, uint256 _tons) public payable {
         CarbonCredit storage credit = carbonCredits[_creditId];
         
-        require(credit.id != 0, "Credit does not exist");
-        require(credit.verified, "Credit not verified");
-        require(!credit.retired, "Credit has been retired");
-        require(_tons > 0 && _tons <= credit.availableTons, "Invalid ton amount");
+        require(credit.id != 0, "Credit does not exist.");
+        require(credit.verified, "Credit not verified.");
+        require(!credit.retired, "Credit has been retired.");
+        require(_tons > 0 && _tons <= credit.availableTons, "Invalid ton amount.");
         
         uint256 totalCost = _tons * credit.pricePerTon;
-        require(msg.value >= totalCost, "Insufficient payment");
+        require(msg.value >= totalCost, "Insufficient payment.");
         
         // Update balances
         credit.availableTons -= _tons;
@@ -140,11 +140,11 @@ struct CarbonCredit {
      * @param _tons Amount of tons to retire
      */
     function retireCarbonCredit(uint256 _creditId, uint256 _tons) public {
-        require(userCreditBalances[msg.sender][_creditId] >= _tons, "Insufficient credit balance");
-        require(_tons > 0, "Must retire at least some tons");
+        require(userCreditBalances[msg.sender][_creditId] >= _tons, "Insufficient credit balance.");
+        require(_tons > 0, "Must retire at least some tons.");
         
         CarbonCredit storage credit = carbonCredits[_creditId];
-        require(credit.id != 0, "Credit does not exist");
+        require(credit.id != 0, "Credit does not exist.");
         
         // Burn the credits
         userCreditBalances[msg.sender][_creditId] -= _tons;
