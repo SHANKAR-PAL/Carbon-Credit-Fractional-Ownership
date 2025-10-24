@@ -37,6 +37,7 @@ struct CarbonCredit {
     /// @param projectName The name of the carbon offset project
     /// @param totalTons Total number of CO2 tons represented
     /// @param pricePerTon Price in wei for each ton of CO2 offset
+
     event CreditCreated(
         uint256 indexed creditId,
         string projectName,
@@ -66,17 +67,18 @@ struct CarbonCredit {
         uint256 tons
     );
     
-    
-    /**
-     * @dev Creates a new carbon credit token
-     * @param _projectName Name of the carbon offset project
-     * @param _totalTons Total tons of CO2 offset
-     * @param _pricePerTon Price per ton in wei
-     */
-// ----------------------
-// Core Project Functions
-// ----------------------
+    // ----------------------
+    // Core Project Functions
+    // ----------------------
 
+    /**
+     * @notice Creates a new verified carbon credit token for a project.
+     * @dev Initializes a CarbonCredit struct and assigns ownership to the creator.
+     * @param _projectName Name of the carbon offset project.
+     * @param _totalTons Total tons of CO2 offset.
+     * @param _pricePerTon Price per ton in wei.
+     * @return The ID of the newly created carbon credit.
+     */
     function createCarbonCredit(
         string memory _projectName,
         uint256 _totalTons,
@@ -103,10 +105,11 @@ struct CarbonCredit {
         return creditCount;
     }
     
-    /**
-     * @dev Purchase fractional carbon credits
-     * @param _creditId ID of the carbon credit to purchase
-     * @param _tons Amount of tons to purchase
+     /**
+     * @notice Allows a user to purchase fractional ownership of a carbon credit.
+     * @dev Transfers payment to the project owner and updates available tons.
+     * @param _creditId The ID of the carbon credit to purchase.
+     * @param _tons The number of tons to purchase.
      */
     function purchaseCarbonCredit(uint256 _creditId, uint256 _tons) public payable {
         CarbonCredit storage credit = carbonCredits[_creditId];
@@ -133,11 +136,11 @@ struct CarbonCredit {
         
         emit CreditPurchased(_creditId, msg.sender, _tons, totalCost);
     }
-    
     /**
-     * @dev Retire carbon credits permanently (remove from circulation)
-     * @param _creditId ID of the carbon credit to retire
-     * @param _tons Amount of tons to retire
+     * @notice Retires a specified amount of carbon credits from circulation.
+     * @dev Reduces the user's balance permanently to reflect retirement.
+     * @param _creditId The ID of the carbon credit being retired.
+     * @param _tons The number of tons to retire.
      */
     function retireCarbonCredit(uint256 _creditId, uint256 _tons) public {
         require(userCreditBalances[msg.sender][_creditId] >= _tons, "Insufficient credit balance.");
@@ -150,20 +153,20 @@ struct CarbonCredit {
         userCreditBalances[msg.sender][_creditId] -= _tons;
         
         emit CreditRetired(_creditId, msg.sender, _tons);
-    }
-    
+    } 
     /**
-     * @dev Get user's balance for a specific credit
-     * @param _user Address of the user
-     * @param _creditId ID of the carbon credit
+     * @notice Returns the remaining balance of a user's fractional credits.
+     * @param _user Address of the user.
+     * @param _creditId ID of the carbon credit.
+     * @return The balance (in tons) owned by the user.
      */
     function getUserBalance(address _user, uint256 _creditId) public view returns (uint256) {
         return userCreditBalances[_user][_creditId];
     }
-    
     /**
-     * @dev Get credit details
-     * @param _creditId ID of the carbon credit
+     * @notice Returns full details of a specific carbon credit.
+     * @param _creditId ID of the carbon credit.
+     * @return projectName, totalTons, availableTons, pricePerTon, owner, verified, retired.
      */
     function getCreditDetails(uint256 _creditId) public view returns (
         string memory projectName,
@@ -186,8 +189,9 @@ struct CarbonCredit {
         );
     }
     /**
-     * @dev Get total number of carbon credits created
-     * @return The total count of credits created so far
+     * @notice Returns total number of carbon credits created.
+     * @dev Useful for querying the total available supply of projects.
+     * @return The total count of carbon credits created so far.
      */
     function getTotalCredits() public view returns (uint256) {
         return creditCount;
