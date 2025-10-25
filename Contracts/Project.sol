@@ -194,12 +194,15 @@ struct CarbonCredit {
         );
     }
     /**
-     * @notice Returns total number of carbon credits created.
+     * @notice Returns the total number of carbon credits created.
      * @dev Useful for querying the total available supply of projects.
      * @return The total count of carbon credits created so far.
      */
     function getTotalCredits() public view returns (uint256) {
         return creditCount;
+    }
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
     }
 }
   
