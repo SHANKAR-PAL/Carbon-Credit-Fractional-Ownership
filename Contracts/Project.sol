@@ -19,18 +19,19 @@ struct CarbonCredit {
     bool retired;             // Whether credit has been fully retired
 }
 
-    // State variables
+// ---------------------------------------------------------------------------
+// State Variables
+// ---------------------------------------------------------------------------
     uint256 public creditCount;
     mapping(uint256 => CarbonCredit) public carbonCredits;
     mapping(address => mapping(uint256 => uint256)) public userCreditBalances;
-    
-    // Events
+
+// ---------------------------------------------------------------------------
+// Events
+// ---------------------------------------------------------------------------
     //event CreditCreated(uint256 indexed creditId, string projectName, uint256 totalTons, uint256 pricePerTon);
     //event CreditPurchased(uint256 indexed creditId, address indexed buyer, uint256 tons, uint256 totalCost);
     //event CreditRetired(uint256 indexed creditId, address indexed retiree, uint256 tons);
-    // ---------------------------------------------------------------------------
-    // Events
-    // ---------------------------------------------------------------------------
     
     /// @notice Emitted when a new carbon credit is created
     /// @param creditId The unique ID assigned to the carbon credit
@@ -67,9 +68,9 @@ struct CarbonCredit {
         uint256 tons
     );
     
-    // ----------------------
-    // Core Project Functions
-    // ----------------------
+// ---------------------------------------------------------------------------
+// Core Functionalities
+// ---------------------------------------------------------------------------
 
     /**
      * @notice Creates a new verified carbon credit token for a project.
@@ -160,6 +161,10 @@ struct CarbonCredit {
      * @param _creditId ID of the carbon credit.
      * @return The balance (in tons) owned by the user.
      */
+// ---------------------------------------------------------------------------
+// View / Getter Functions
+// ---------------------------------------------------------------------------
+
     function getUserBalance(address _user, uint256 _creditId) public view returns (uint256) {
         return userCreditBalances[_user][_creditId];
     }
