@@ -204,6 +204,16 @@ struct CarbonCredit {
     function getContractBalance() public view returns (uint256) {
         return address(this).balance;
     }
+    /**
+     * @notice Checks if a specific carbon credit is available for purchase.
+     * @dev Returns true if verified, not retired, and has available tons > 0.
+     * @param _creditId ID of the carbon credit.
+     * @return A boolean value indicating availability status.
+     */
+    function isCreditAvailable(uint256 _creditId) public view returns (bool) {
+        CarbonCredit memory credit = carbonCredits[_creditId];
+        return (credit.verified && !credit.retired && credit.availableTons > 0);
+    }
 }
   
 
