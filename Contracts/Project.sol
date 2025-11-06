@@ -81,7 +81,7 @@ struct CarbonCredit {
      * @return The ID of the newly created carbon credit.
      */
     function createCarbonCredit(
-        string memory _projectName,
+        string calldata _projectName, // Using calldata for gas efficiency (read-only external input)
         uint256 _totalTons,
         uint256 _pricePerTon
     ) public returns (uint256) {
