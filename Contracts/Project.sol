@@ -84,7 +84,7 @@ struct CarbonCredit {
         string calldata _projectName, // Using calldata for gas efficiency (read-only external input)
         uint256 _totalTons,
         uint256 _pricePerTon
-    ) public returns (uint256) {
+    ) external returns (uint256) { // Changed to external for gas optimization
         require(_totalTons > 0, "Total tons must be greater than 0.");
         require(_pricePerTon > 0, "Price per ton must be greater than 0.");
 
