@@ -215,6 +215,18 @@ struct CarbonCredit {
         CarbonCredit memory credit = carbonCredits[_creditId];
         return (credit.verified && !credit.retired && credit.availableTons > 0);
     }
+    // ---------------------------------------------------------------------------
+    // ETH Receive Function
+    // ---------------------------------------------------------------------------
+    
+    /**
+     * @notice Handles direct ETH transfers sent to the contract.
+     * @dev Allows contract to safely receive ETH without executing any function.
+     */
+    receive() external payable {
+        // Accept Ether transfers silently
+}
+
 }
   
 
