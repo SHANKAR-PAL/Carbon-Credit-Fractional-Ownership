@@ -25,7 +25,9 @@ struct CarbonCredit {
 // ---------------------------------------------------------------------------
     uint256 public creditCount;
     mapping(uint256 => CarbonCredit) public carbonCredits;
+    // Tracks how many tons of a specific carbon credit each user owns
     mapping(address => mapping(uint256 => uint256)) public userCreditBalances;
+
 
 // ---------------------------------------------------------------------------
 // Events
