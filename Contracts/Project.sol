@@ -28,6 +28,11 @@ struct CarbonCredit {
     // Tracks how many tons of a specific carbon credit each user owns
     mapping(address => mapping(uint256 => uint256)) public userCreditBalances;
 
+// ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
+
 
 // ---------------------------------------------------------------------------
 // Events
@@ -88,7 +93,7 @@ struct CarbonCredit {
         uint256 _totalTons,
         uint256 _pricePerTon
     ) external returns (uint256) { // Changed to external for gas optimization
-        require(_totalTons > 0, "Total tons must be greater than 0.");
+        require(_totalTons >= MIN_TONS, "Total tons must be at least 1.");
         require(_pricePerTon > 0, "Price per ton must be greater than 0.");
 
         creditCount++;
