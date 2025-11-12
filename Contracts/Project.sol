@@ -35,7 +35,11 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
 
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // Events
+// ---------------------------------------------------------------------------
+// The following events log key lifecycle actions (creation, purchase, and retirement)
+// to ensure transparency, traceability, and easy off-chain indexing for analytics.
 // ---------------------------------------------------------------------------
     //event CreditCreated(uint256 indexed creditId, string projectName, uint256 totalTons, uint256 pricePerTon);
     //event CreditPurchased(uint256 indexed creditId, address indexed buyer, uint256 tons, uint256 totalCost);
