@@ -237,7 +237,16 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
     receive() external payable {
         // Accept Ether transfers silently
 }
+// ---------------------------------------------------------------------------
+// Fallback Function
+// ---------------------------------------------------------------------------
 
+/**
+ * @notice Reverts if someone tries to call an undefined function.
+ */
+fallback() external payable {
+    revert("Function does not exist");
+}
 }
   
 
