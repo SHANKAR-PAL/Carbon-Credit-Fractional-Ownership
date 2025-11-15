@@ -213,8 +213,11 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
     function getTotalCredits() public view returns (uint256) {
         return creditCount;
     }
-    function getContractBalance() public view returns (uint256) {
+    // Returns the total ETH currently held by the contract for transparency and monitoring
+    function getContractBalance() external view returns (uint256) {
         return address(this).balance;
+    }
+
     }
     /**
      * @notice Checks if a specific carbon credit is available for purchase.
