@@ -225,7 +225,8 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
      * @param _creditId ID of the carbon credit.
      * @return A boolean value indicating availability status.
      */
-    function isCreditAvailable(uint256 _creditId) public view returns (bool) {
+    // Helper view function to quickly check if a carbon credit is purchasable
+    function isCreditAvailable(uint256 _creditId) external view returns (bool) {
         CarbonCredit memory credit = carbonCredits[_creditId];
         return (credit.verified && !credit.retired && credit.availableTons > 0);
     }
