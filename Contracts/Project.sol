@@ -8,7 +8,7 @@ pragma solidity ^0.8.0;
  * @title Carbon Credit Fractional Ownership
  * @dev A smart contract for fractionalizing and trading carbon credits
  */
-
+// Data structure representing a carbon credit project and its state
 struct CarbonCredit {
     uint256 id;               // Unique identifier for the credit
     string projectName;       // Name of the carbon project
