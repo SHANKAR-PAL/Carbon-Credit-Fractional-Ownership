@@ -124,6 +124,7 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
      * @param _creditId The ID of the carbon credit to purchase.
      * @param _tons The number of tons to purchase.
      */
+    // Allows users to purchase fractional carbon credits and handles the payment settlement
     function purchaseCarbonCredit(uint256 _creditId, uint256 _tons) public payable {
         CarbonCredit storage credit = carbonCredits[_creditId];
         
