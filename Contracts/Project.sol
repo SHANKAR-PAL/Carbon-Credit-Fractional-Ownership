@@ -155,6 +155,7 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
      * @param _creditId The ID of the carbon credit being retired.
      * @param _tons The number of tons to retire.
      */
+    // Permanently removes purchased carbon credits from circulation (similar to token burn)
     function retireCarbonCredit(uint256 _creditId, uint256 _tons) public {
         require(userCreditBalances[msg.sender][_creditId] >= _tons, "Insufficient credit balance.");
         require(_tons > 0, "Must retire at least some tons.");
