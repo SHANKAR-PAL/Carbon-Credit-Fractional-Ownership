@@ -178,7 +178,7 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
 // ---------------------------------------------------------------------------
 // View / Getter Functions
 // ---------------------------------------------------------------------------
-
+// Returns how many tons of a specific carbon credit a user currently owns
     function getUserBalance(address _user, uint256 _creditId) public view returns (uint256) {
         return userCreditBalances[_user][_creditId];
     }
