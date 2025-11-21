@@ -187,6 +187,7 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
      * @param _creditId ID of the carbon credit.
      * @return projectName, totalTons, availableTons, pricePerTon, owner, verified, retired.
      */
+    // Provides complete details of a carbon credit, including metadata and current state
     function getCreditDetails(uint256 _creditId) public view returns (
         string memory projectName,
         uint256 totalTons,
