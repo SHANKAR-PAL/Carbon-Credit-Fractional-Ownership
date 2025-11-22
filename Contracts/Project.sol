@@ -213,6 +213,7 @@ uint256 public constant MIN_TONS = 1; // Minimum ton value for validation
      * @dev Useful for querying the total available supply of projects.
      * @return The total count of carbon credits created so far.
      */
+    // Returns how many carbon credit projects have been created so far
     function getTotalCredits() public view returns (uint256) {
         return creditCount;
     }
