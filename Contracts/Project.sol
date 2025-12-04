@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: mit
+// SPDX-License-Identifier: MIT
 // License: MIT ensures open-source compliance and allows reuse under permissive terms.
 // Solidity version pragma ensures compatibility with compiler version 0.8.x
 
